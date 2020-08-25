@@ -3,9 +3,9 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:ap-south-1:143787628822:task-definition/docker-demo-tg:4"
+        TaskDefinition: "arn:aws:ecs:ap-south-1:143787628822:task-definition/ecs-node-docker-td:2"
         LoadBalancerInfo:
-          ContainerName: "docker-demo-cn"
+          ContainerName: "ecs-node-docker"
           ContainerPort: 3000
 # Optional properties
         PlatformVersion: "LATEST"
