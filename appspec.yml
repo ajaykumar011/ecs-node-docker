@@ -1,0 +1,22 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:ap-south-1:143787628822:task-definition/docker-demo-tg:4"
+        LoadBalancerInfo:
+          ContainerName: "docker-demo-cn"
+          ContainerPort: 3000
+# Optional properties
+        PlatformVersion: "LATEST"
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets: ["subnet-04d6740db3a28fb81","subnet-01dcd151257a3ea32"]
+            SecurityGroups: ["sg-0d7fe739675005eda","sg-06d7afa74345c3155"]
+            AssignPublicIp: "ENABLED"
+Hooks:
+  - BeforeInstall: ""
+  - AfterInstall: ""
+  - AfterAllowTestTraffic: ""
+  - BeforeAllowTraffic: ""
+  - AfterAllowTraffic: ""
