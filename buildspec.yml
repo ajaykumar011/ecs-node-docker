@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 143787628822.dkr.ecr.ap-south-1.amazonaws.com
+  build:
+    commands:
+      - docker build -t ecs-node-docker .
+      - docker tag ecs-node-docker:latest 143787628822.dkr.ecr.ap-south-1.amazonaws.com/ecs-node-docker:latest
+  post_build:
+    commands:
+      - docker push 143787628822.dkr.ecr.ap-south-1.amazonaws.com/ecs-node-docker:latest
+#     - printf '[{"name":ecs-node-docker,"imageUri":"%s"}]' 143787628822.dkr.ecr.ap-south-1.amazonaws.com/ecs-node-docker:latest > imagedefinitions.json
+      - printf '[{"name":"ecs-node-docker","imageUri":"143787628822.dkr.ecr.ap-south-1.amazonaws.com/ecs-node-docker:latest"}]' > imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json
+
