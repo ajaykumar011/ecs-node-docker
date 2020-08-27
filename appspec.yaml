@@ -4,7 +4,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: <TASK_DEFINITION>
+        TaskDefinition: "arn:aws:ecs:ap-south-1:143787628822:task-definition/ecs-node-docker-td"
         LoadBalancerInfo:
           ContainerName: "ecs-node-docker"
           ContainerPort: 3000
