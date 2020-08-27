@@ -63,7 +63,7 @@
   "compatibilities": [
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-south-1:143787628822:task-definition/ecs-node-docker-td:3",
+  "taskDefinitionArn": "arn:aws:ecs:ap-south-1:143787628822:task-definition/ecs-node-docker-td:4",
   "family": "ecs-node-docker-td",
   "requiresAttributes": [
     {
