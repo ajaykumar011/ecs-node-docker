@@ -30,9 +30,9 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      #- printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+      - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
       #- printf '[{"name":"ecs-node-docker","imageUri":"143787628822.dkr.ecr.ap-south-1.amazonaws.com/ecs-node-docker:latest"}]' > imagedefinitions.json
-      - printf '[{"name":"ecs-node-docker","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+      #- printf '[{"name":"ecs-node-docker","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
       - echo Build completed on `date`
 artifacts:
   files:
