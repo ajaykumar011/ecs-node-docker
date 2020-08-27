@@ -1,18 +1,36 @@
 version: 0.2
-
+### Defines the steps used by AWS CodeBuild
+ 
 phases:
   pre_build:
     commands:
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 143787628822.dkr.ecr.ap-south-1.amazonaws.com
+      - echo Build started on `date`
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
-      - docker build -t ecs-node-docker .
-      - docker tag ecs-node-docker:latest 143787628822.dkr.ecr.ap-south-1.amazonaws.com/ecs-node-docker:latest
+      - echo Building the Docker image...
+      - docker build -t $REPOSITORY_URI:latest -t $REPOSITORY_URI:$IMAGE_TAG -f Dockerfile .
   post_build:
     commands:
-      - docker push 143787628822.dkr.ecr.ap-south-1.amazonaws.com/ecs-node-docker:latest
-#     - printf '[{"name":ecs-node-docker,"imageUri":"%s"}]' 143787628822.dkr.ecr.ap-south-1.amazonaws.com/ecs-node-docker:latest > imagedefinitions.json
-      - printf '[{"name":"ecs-node-docker","imageUri":"143787628822.dkr.ecr.ap-south-1.amazonaws.com/ecs-node-docker:latest"}]' > imagedefinitions.json
+      - echo Pushing the Docker images to container registry...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+      - echo Build completed on `date`
 artifacts:
-  files: imagedefinitions.json
-
+  files:
+    - appspec.yaml
+    - taskdef.json
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.yaml
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imageDetail.json
