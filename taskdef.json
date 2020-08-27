@@ -3,7 +3,7 @@
     "containerDefinitions": [
       {
         "name": "ecs-node-docker",
-        "image": "<IMAGE>",
+        "image": "143787628822.dkr.ecr.ap-south-1.amazonaws.com/ecs-node-docker:latest",
         "essential": true,
         "portMappings": [
           {
