@@ -1,0 +1,29 @@
+{
+    "taskDefinition": "arn:aws:ecs:ap-south-1:143787628822:task-definition/ecs-node-docker-td:5",
+    "cluster": "ecs-node-docker",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:ap-south-1:143787628822:targetgroup/tg-ecs-no-ecs-node-docker-svc-1/c1e3cc3196868c97",
+            "containerName": "ecs-node-docker",
+            "containerPort": 3000
+        }
+    ],
+    "desiredCount": 1,
+    "launchType": "EC2",
+    "schedulingStrategy": "REPLICA",
+    "deploymentController": {
+        "type": "CODE_DEPLOY"
+    },
+    "networkConfiguration": {
+        "awsvpcConfiguration": {
+            "subnets": [
+                "subnet-b01b1ed8",
+                "subnet-812c46cd"
+            ],
+            "securityGroups": [
+                "sg-0fad14fda06a6d26e"
+            ],
+            "assignPublicIp": "DISABLED"
+        }
+    }
+}
