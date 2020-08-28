@@ -1,4 +1,4 @@
-#version: 0.0
+version: 0.0
  
 Resources:
   - TargetService:
@@ -9,4 +9,3 @@ Resources:
         LoadBalancerInfo:
           ContainerName: "ecs-node-docker"
           ContainerPort: 3000
-        PlatformVersion: "LATEST"
