@@ -27,4 +27,7 @@ phases:
       - echo Writing image definitions file...
       - printf '[{"name":"ecs-node-docker","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
 artifacts:
-    files: imageDetail.json
+  files:
+    - appspec.yaml
+    - taskdef.json
+    - imageDetail.json
