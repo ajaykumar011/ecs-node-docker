@@ -1,10 +1,20 @@
 {
+    "ipcMode": null,
     "executionRoleArn": "arn:aws:iam::143787628822:role/ecsTaskExecutionRole",
     "containerDefinitions": [
       {
-        "name": "ecs-node-docker",
-        "image": "<IMAGE1_NAME>",
-        "essential": true,
+        "dnsSearchDomains": null,
+        "environmentFiles": null,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "secretOptions": null,
+          "options": {
+            "awslogs-group": "/ecs/ecs-node-docker-td",
+            "awslogs-region": "ap-south-1",
+            "awslogs-stream-prefix": "ecs"
+          }
+        },
+        "entryPoint": null,
         "portMappings": [
           {
             "hostPort": 0,
@@ -12,20 +22,59 @@
             "containerPort": 3000
           }
         ],
-        "logConfiguration": {
-          "logDriver": "awslogs",
-          "options": {
-            "awslogs-group": "/ecs/ecs-node-docker-td",
-            "awslogs-region": "ap-south-1",
-            "awslogs-stream-prefix": "ecs"
-          }
-        }
+        "command": null,
+        "linuxParameters": null,
+        "cpu": 0,
+        "environment": [],
+        "resourceRequirements": null,
+        "ulimits": null,
+        "dnsServers": null,
+        "mountPoints": [],
+        "workingDirectory": null,
+        "secrets": null,
+        "dockerSecurityOptions": null,
+        "memory": null,
+        "memoryReservation": 128,
+        "volumesFrom": [],
+        "stopTimeout": null,
+        "image": "image_name",
+        "startTimeout": null,
+        "firelensConfiguration": null,
+        "dependsOn": null,
+        "disableNetworking": null,
+        "interactive": null,
+        "healthCheck": null,
+        "essential": true,
+        "links": null,
+        "hostname": null,
+        "extraHosts": null,
+        "pseudoTerminal": null,
+        "user": null,
+        "readonlyRootFilesystem": null,
+        "dockerLabels": null,
+        "systemControls": null,
+        "privileged": null,
+        "name": "ecs-node-docker"
       }
     ],
+    "placementConstraints": [],
+    "memory": "256",
+    "taskRoleArn": null,
+    "compatibilities": [
+      "EC2"    
+    ],
+    "taskDefinitionArn": "ARN",
+    "family": "ecs-node-docker-td",
+    "requiresAttributes": [],
+    "pidMode": null,
     "requiresCompatibilities": [
       "EC2"
     ],
+    "networkMode": "bridge",
     "cpu": "256",
-    "memory": "256",
-    "family": "ecs-node-docker-td"
+    "revision": 1,
+    "status": "ACTIVE",
+    "inferenceAccelerators": null,
+    "proxyConfiguration": null,
+    "volumes": []
   }
