@@ -35,15 +35,12 @@ phases:
       #- printf '[{"name":"ecs-node-docker","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
       - echo Build completed on `date`
 artifacts:
-  files:
-    - appspec.yaml
-    - taskdef.json
-  secondary-artifacts:
-    DefinitionArtifact:
-      files:
-        - appspec.yaml
-        - taskdef.json
-      discard-paths: yes
-    ImageArtifact:
+  DefinitionArtifact:
+    files:
+      - appspec.yaml
+      - taskdef.json
+    discard-paths: yes
+  ImageArtifact:
       files:
         - imageDetail.json
+    
