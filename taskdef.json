@@ -2,15 +2,9 @@
     "executionRoleArn": "arn:aws:iam::143787628822:role/ecsTaskExecutionRole",
     "containerDefinitions": [
       {
-        "logConfiguration": {
-          "logDriver": "awslogs",
-            "options": {
-            "awslogs-group": "/ecs/ecs-node-docker-td",
-            "awslogs-region": "ap-south-1",
-            "awslogs-stream-prefix": "ecs"
-          }
-        },
-        "entryPoint": null,
+        "name": "ecs-node-docker",
+        "image": "<IMAGE1_NAME>",
+        "essential": true,
         "portMappings": [
           {
             "hostPort": 0,
@@ -18,25 +12,20 @@
             "containerPort": 3000
           }
         ],
-        "cpu": 256,
-        "memory": 128,
-        "image": "<IMAGE1_NAME>",
-        "name": "ecs-node-docker"
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/ecs-node-docker-td",
+            "awslogs-region": "ap-south-1",
+            "awslogs-stream-prefix": "ecs"
+          }
+        }
       }
     ],
-    "placementConstraints": [],
-    "memory": "256",
-    "taskRoleArn": "arn:aws:iam::143787628822:role/ecsTaskExecutionRole",
-    "compatibilities": [
-      "EC2"
-    ],
-    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:143787628822:task-definition/ecs-node-docker-td:latest",
-    "family": "ecs-node-docker-td",
     "requiresCompatibilities": [
       "EC2"
     ],
-    "networkMode": "bridge",
     "cpu": "256",
-    "revision": 6,
-    "status": "ACTIVE"
+    "memory": "256",
+    "family": "ecs-node-docker-td"
   }
