@@ -4,7 +4,7 @@
   "description": "Node.js on Docker",
   "author": "First Last <first.last@example.com>",
   "main": "server.js",
-  "license" : "LICENSE",
+  "license" : "UNLICENSED",
   "scripts": {
     "start": "node server.js"
   },
