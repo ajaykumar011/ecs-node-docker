@@ -4,13 +4,14 @@
   "description": "Node.js on Docker",
   "author": "First Last <first.last@example.com>",
   "main": "server.js",
+  "license" : "license.txt" 
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
   "type": "git",
   "url": "git://github.com/ajaykumar011/ecs-node-docker.git"
-}
+},
   "dependencies": {
     "express": "^4.16.1"
   }
